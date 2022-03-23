@@ -1,6 +1,7 @@
 deploy:
   - apt-get update -y
   - apt-get install -y unzip
+  - apt-get install -y python
   - curl -fSL https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip -o awscliv2.zip
   - unzip awscliv2.zip
   - ./aws/install
