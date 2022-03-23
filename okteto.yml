@@ -1,7 +1,7 @@
 name: multirepo-demo
 
 deploy:
-  - okteto pipeline deploy -r https://github.com/okteto/microservices-demo --name microservices
+  - # okteto pipeline deploy -r https://github.com/okteto/microservices-demo --name microservices
   - # apt-get update
   - # apt-get install curl#
   - curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
