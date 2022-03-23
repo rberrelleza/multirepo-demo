@@ -1,51 +1,18 @@
 name: multirepo-demo
 
-# The build section defines how to build the images of your development environment
-# More info: https://www.okteto.com/docs/reference/manifest/#build
-build:
-
-  # You can use the following env vars to refer to this image in your deploy commands:
-  #  - OKTETO_BUILD_JAVA-MAVEN-GETTING-STARTED_REGISTRY: image registry
-  #  - OKTETO_BUILD_JAVA-MAVEN-GETTING-STARTED_REPOSITORY: image repo
-  #  - OKTETO_BUILD_JAVA-MAVEN-GETTING-STARTED_IMAGE: image name
-  #  - OKTETO_BUILD_JAVA-MAVEN-GETTING-STARTED_TAG: image tag
-  java-maven-getting-started:
-    context: .
-    dockerfile: Dockerfile
-    image: okteto.dev/java-maven-getting-started-java-maven-getting-started:okteto
-
-# The deploy section defines how to deploy your development environment
-# More info: https://www.okteto.com/docs/reference/manifest/#deploy
 deploy:
   - okteto pipeline deploy -r https://github.com/okteto/microservices-demo --name microservices
-  - okteto pipeline deploy -r https://github.com/okteto/movies-with-compose --name movies
-  - kubectl apply -f k8s.yml
-
-# The dependencies section defines other git repositories to be deployed as part of your development environment
-# More info: https://www.okteto.com/docs/reference/manifest/#dependencies
-# dependencies:
-#   - https://github.com/okteto/sample
-
-
-# The dev section defines how to activate a development container
-# More info: https://www.okteto.com/docs/reference/manifest/#dev
-dev:
-  hello-world:
-    context: https://cloud.okteto.com
-    namespace: gabriel-okteto
-    image: okteto/maven:3
-    command:
-      - sh
-      - -c
-      - mvn spring-boot:run
-    workdir: /app
-    sync:
-      - .:/app
-    forward:
-      - 5005:5005
-      - 8080:8080
-    volumes:
-      - /root/.m2
-namespace: gabriel-okteto
-context: https://cloud.okteto.com
+  - # apt-get update
+  - # apt-get install curl# curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+  - # apt-get install unzip# unzip awscliv2.zip
+  - # ./aws/install
+  - # curl "https://github.com/aws/aws-sam-cli/releases/latest/download/aws-sam-cli-linux-x86_64.zip"
+  - # unzip aws-sam-cli-linux-x86_64.zip -d sam-installation
+  - # ./sam-installation/install
+  - # sam --version
+  - # aws --version
+  - # export AWS_ACCESS_KEY_ID=XXXXXXXXXXXXXXXXXXXX
+  - # export AWS_SECRET_ACCESS_KEY=yyyyyyyxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  - # sam build
+  - # sam deploy
 

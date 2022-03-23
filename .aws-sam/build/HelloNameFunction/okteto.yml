@@ -1,0 +1,7 @@
+name: multirepo-demo
+
+deploy:
+  - okteto pipeline deploy -r https://github.com/okteto/microservices-demo --name microservices
+  - sam build
+  - sam deploy
+
