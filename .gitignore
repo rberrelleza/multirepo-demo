@@ -4,5 +4,5 @@ target
 *.log
 .DS_Store
 
-awscliv2.zip
-aws-sam-cli-linux-x86_64.zip
+# awscliv2.zip
+# aws-sam-cli-linux-x86_64.zip

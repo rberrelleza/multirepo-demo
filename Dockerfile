@@ -1,31 +1,21 @@
 
 FROM ubuntu:bionic
 
-# WORKDIR /usr/include/
-
-## We pass the boost version argument as argument
-#ARG BOOST_VERSION
-#ARG BOOST_VERSION_
-#ENV BOOST_VERSION=${BOOST_VERSION}
-#ENV BOOST_VERSION_=${BOOST_VERSION_}
-#ENV BOOST_ROOT=/usr/include/boost
-#
 RUN apt-get -qq update && apt-get install -q -y software-properties-common
 RUN add-apt-repository ppa:ubuntu-toolchain-r/test -y
 RUN apt-get -qq update && apt-get install -qy g++ gcc git wget curl unzip
 
-RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-RUN curl "https://github.com/aws/aws-sam-cli/releases/latest/download/aws-sam-cli-linux-x86_64.zip"
+COPY "awscliv2.zip" .
+COPY "aws-sam-cli-linux-x86_64.zip" .
 
-./aws/install
-./sam-installation/install
+RUN unzip awscliv2.zip
+RUN unzip aws-sam-cli-linux-x86_64.zip -d sam-installation
+RUN ./aws/install
+RUN ./sam-installation/install
 
 RUN sam --version
 
-#
-#RUN wget --max-redirect 3 https://boostorg.jfrog.io/artifactory/main/release/${BOOST_VERSION}/source/boost_${BOOST_VERSION_}.tar.gz
-#RUN mkdir -p /usr/include/boost && tar zxf boost_${BOOST_VERSION_}.tar.gz -C /usr/include/boost --strip-components=1
-#
-#RUN echo ${BOOST_ROOT}
+ENV __AWS_ACCESS_KEY_ID=XXXXXXXXXXXXXXXXXXXX
+ENV __AWS_SECRET_ACCESS_KEY=yyyyyyyxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 ENTRYPOINT /bin/bash
