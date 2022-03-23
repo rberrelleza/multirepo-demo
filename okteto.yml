@@ -1,6 +1,10 @@
 autocreate: true
 name: multirepo-demo
-image: okteto/golang:1
+image: okteto/python:3
+environment:
+  - AWS_ACCESS_KEY_ID=AKIA6QY3VDTT35JERSEG
+  - AWS_SECRET_ACCESS_KEY=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
 command: bash
+workdir: /src
 sync:
-  - .:/usr/src/app
+  - .:/src

@@ -1,3 +1,7 @@
-.idea
-.git
-?
+/.idea
+/.git
+/awscliv2.zip
+/aws
+/aws-sam-cli-linux-x86_64.zip
+/sam-installation
+/.aws-sam
