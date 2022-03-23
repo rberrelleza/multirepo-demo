@@ -17,9 +17,9 @@ build:
 # The deploy section defines how to deploy your development environment
 # More info: https://www.okteto.com/docs/reference/manifest/#deploy
 deploy:
-  - kubectl apply -f k8s.yml
+  - okteto pipeline deploy -r https://github.com/okteto/microservices-demo --name microservices
   - okteto pipeline deploy -r https://github.com/okteto/movies-with-compose --name movies
-  - okteto pipeline deploy -r https://github.com/okteto/microservices-with-compose --name microservices
+  - kubectl apply -f k8s.yml
 
 # The dependencies section defines other git repositories to be deployed as part of your development environment
 # More info: https://www.okteto.com/docs/reference/manifest/#dependencies
