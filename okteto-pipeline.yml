@@ -1,5 +1,7 @@
 icon: https://github.com/okteto/multirepo-demo/raw/main/lambda-icon.jpg
 deploy:
-  - okteto pipeline deploy -r https://github.com/okteto/microservices-demo --skip-if-exists
-  - sam build && echo $?
-  - sam deploy --no-confirm-changeset
+  - sam build
+  - sam deploy --no-confirm-changeset --s3-prefix "${OKTETO_NAMESPACE}" --stack-name "${OKTETO_NAMESPACE}-okteto-lambda"
+  - okteto pipeline deploy -r https://github.com/okteto/microservices-demo --var LAMBDA_URL=`aws cloudformation describe-stacks --stack-name ${OKTETO_NAMESPACE}-okteto-lambda --query "Stacks[0].Outputs[0].OutputValue" --output text`
+destroy:
+  - sam delete --no-prompts --stack-name "${OKTETO_NAMESPACE}-okteto-lambda" --region us-east-1
