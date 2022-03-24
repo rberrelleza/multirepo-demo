@@ -10,16 +10,3 @@ def lambda_handler(event, context):
     coll = db['votes']
     coll.insert_one(event)
     return ""
-
-
-app = Flask(__name__)
-
-@app.route('/', methods = ['POST'])
-def vote():
-    request_data = request.get_json()
-
-
-
-if __name__ == '__main__':
-  print('Starting lambda server...')
-  app.run(host='0.0.0.0', port=8080)
