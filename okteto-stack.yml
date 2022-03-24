@@ -1,5 +1,0 @@
-services:
-  lambda:
-    build: Dockerfile.lambda
-    ports:
-      - 8080
