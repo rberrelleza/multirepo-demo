@@ -1,5 +1,5 @@
 icon: https://github.com/okteto/multirepo-demo/raw/main/lambda-icon.jpg
 deploy:
-  - okteto pipeline deploy -r https://github.com/okteto/microservices-demo
+  - okteto pipeline deploy -r https://github.com/okteto/microservices-demo --skip-if-exists
   - sam build && echo $?
   - sam deploy --no-confirm-changeset
