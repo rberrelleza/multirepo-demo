@@ -1,5 +1,16 @@
 AWSTemplateFormatVersion : '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
+Parameters:
+  MongoDBUsername:
+    Type: String
+    Default: "okteto"
+  MongoDBPassword:
+    Type: String
+    Default: "okteto"
+  MongoDBDatabase:
+    Type: String
+    Default: "okteto"
+
 Resources:
   ApiGateway:
     Type: AWS::Serverless::Api
@@ -27,9 +38,9 @@ Resources:
       Runtime: python3.9
       Environment:
         Variables:
-          MONGODB_USERNAME: ${MONGODB_USERNAME}
-          MONGODB_PASSWORD: ${MONGODB_PASSWORD}
-          MONGODB_DATABASE: ${MONGODB_DATABASE}
+          MONGODB_USERNAME: !Ref MongoDBUsername
+          MONGODB_PASSWORD: !Ref MongoDBPassword
+          MONGODB_DATABASE: !Ref MongoDBDatabase
       Events:
         HttpPost:
           Type: Api
