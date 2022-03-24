@@ -9,4 +9,8 @@ def lambda_handler(event, context):
     db = client['okteto']
     coll = db['votes']
     coll.insert_one(event)
-    return ""
+
+    return {
+        "statusCode": 200,
+        "body": "Acepted!"
+    }
