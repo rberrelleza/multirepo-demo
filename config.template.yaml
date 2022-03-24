@@ -25,6 +25,11 @@ Resources:
     Properties:
       Handler: app.lambda_handler
       Runtime: python3.9
+      Environment:
+        Variables:
+          MONGODB_USERNAME: ${MONGODB_USERNAME}
+          MONGODB_PASSWORD: ${MONGODB_PASSWORD}
+          MONGODB_DATABASE: ${MONGODB_DATABASE}
       Events:
         HttpPost:
           Type: Api
