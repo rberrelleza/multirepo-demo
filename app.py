@@ -1,19 +1,16 @@
-import json
+import os
+from flask import Flask
 
-# reference, 
-# https://travis.media/developing-aws-lambda-functions-locally-vscode/
+app = Flask(__name__)
 
-def lambda_handler(event, context):
-    first_name = event['first_name']
-    last_name = event['last_name']
-    greeting = event['greeting']
+@app.route('/')
+def hello_world():
+    msg = 'Hello World!'
+    return msg
 
-    message = f"{greeting} {first_name} {last_name}!"  
+if __name__ == '__main__':
+  print('Starting lambda server...')
+  # comment out to use Pycharm's remote debugger
+  # attach()
 
-    return { 
-        'message' : message
-    }
-
-    # sam build
-    # sam local invoke HelloNameFunction -e events/events.json
-    # sam deploy
+  app.run(host='0.0.0.0', port=8080)
