@@ -3,13 +3,10 @@ Transform: AWS::Serverless-2016-10-31
 Parameters:
   MongoDBUsername:
     Type: String
-    Default: "okteto"
   MongoDBPassword:
     Type: String
-    Default: "okteto"
   MongoDBDatabase:
     Type: String
-    Default: "okteto"
 
 Resources:
   ApiGateway:
