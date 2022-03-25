@@ -7,6 +7,8 @@ Parameters:
     Type: String
   MongoDBDatabase:
     Type: String
+  MongoDBHost:
+    Type: String
 
 Resources:
   ApiGateway:
@@ -38,6 +40,7 @@ Resources:
           MONGODB_USERNAME: !Ref MongoDBUsername
           MONGODB_PASSWORD: !Ref MongoDBPassword
           MONGODB_DATABASE: !Ref MongoDBDatabase
+          MONGODB_HOST: !Ref MongoDBHost
       Events:
         HttpPost:
           Type: Api

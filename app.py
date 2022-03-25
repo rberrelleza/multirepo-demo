@@ -5,7 +5,8 @@ def lambda_handler(event, context):
     username = os.getenv('MONGODB_USERNAME')
     password = os.getenv('MONGODB_PASSWORD')
     database = os.getenv('MONGODB_DATABASE')
-    client = MongoClient('mongodb+srv://' + username + ':' + password + '@mongodb-serverless.tussl.mongodb.net/' + database + '?retryWrites=true&w=majority')
+    host = os.getenv('MONGODB_HOST', 'mongodb-serverless.tussl.mongodb.net')
+    client = MongoClient('mongodb+srv://' + username + ':' + password + '@'+ host + '/' + database + '?retryWrites=true&w=majority')
     db = client[database]
     coll = db['votes']
     coll.insert_one(event)
