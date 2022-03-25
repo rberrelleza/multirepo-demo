@@ -7,3 +7,5 @@ deploy:
   - okteto pipeline deploy --name result -r https://github.com/okteto/microservices-demo --branch lambda -f result/okteto-pipeline.yml
 destroy:
   - sam delete --no-prompts --stack-name "${OKTETO_NAMESPACE}-okteto-lambda" --region us-east-1
+  - okteto pipeline destroy --name vote
+  - okteto pipeline destroy --name result
